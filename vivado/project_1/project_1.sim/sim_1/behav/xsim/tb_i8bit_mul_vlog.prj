@@ -1,0 +1,18 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../../../src/csa_1_4bit.sv" \
+"../../../../../../src/csa_1_8bit.sv" \
+"../../../../../../src/csa_2_4bit.sv" \
+"../../../../../../src/csa_2_8bit.sv" \
+"../../../../../../src/fa.sv" \
+"../../../../../../src/ha.sv" \
+"../../../../../../src/i2bit_mul.sv" \
+"../../../../../../src/i4bit_mul.sv" \
+"../../../../../../src/i8bit_mul.sv" \
+"../../../../../../src/tb_i8bit_mul.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

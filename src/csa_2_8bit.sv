@@ -1,7 +1,6 @@
 module csa_2_8bit(
 	ia,
 	ib,
-	ic,
 	ot
 	);
 
@@ -18,7 +17,7 @@ ha ha_3(ia[2],ib[2],wc[2],ws[1]);
 ha ha_4(ia[3],ib[3],wc[3],ws[2]);
 ha ha_5(ia[4],ib[4],wc[4],ws[3]);
 
-ha ha_5(wc[0],ws[0],wc[5],ot[1]);
+ha ha_6(wc[0],ws[0],wc[5],ot[1]);
 fa fa_4(wc[5],wc[1],ws[1],wc[6],ot[2]);
 fa fa_5(wc[6],wc[2],ws[2],wc[7],ot[3]);
 fa fa_6(wc[7],wc[3],ws[3],wc[8],ot[4]);

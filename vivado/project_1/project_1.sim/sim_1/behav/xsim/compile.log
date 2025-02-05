@@ -1,0 +1,22 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/csa_1_4bit.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module csa_1_4bit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/csa_1_8bit.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module csa_1_8bit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/csa_2_4bit.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module csa_2_4bit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/csa_2_8bit.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module csa_2_8bit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/fa.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fa
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/ha.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ha
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/i2bit_mul.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2bit_mul
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/i4bit_mul.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i4bit_mul
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/i8bit_mul.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i8bit_mul
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/tb_i8bit_mul.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_i8bit_mul
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Github/tt10-test/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

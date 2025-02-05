@@ -1,0 +1,26 @@
+Vivado Simulator v2024.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: D:/SOFTWARES/vivado2024/install/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_i8bit_mul_behav xil_defaultlib.tb_i8bit_mul xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-3091] actual bit length 4 differs from formal bit length 5 for port 'ot' [D:/Github/tt10-test/src/i4bit_mul.sv:22]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "D:/Github/tt10-test/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "D:/Github/tt10-test/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.i2bit_mul
+Compiling module xil_defaultlib.fa
+Compiling module xil_defaultlib.ha
+Compiling module xil_defaultlib.csa_1_4bit
+Compiling module xil_defaultlib.csa_2_4bit
+Compiling module xil_defaultlib.i4bit_mul
+Compiling module xil_defaultlib.csa_1_8bit
+Compiling module xil_defaultlib.csa_2_8bit
+Compiling module xil_defaultlib.i8bit_mul
+Compiling module xil_defaultlib.tb_i8bit_mul
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_i8bit_mul_behav
