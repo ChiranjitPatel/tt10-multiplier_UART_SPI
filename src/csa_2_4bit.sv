@@ -17,6 +17,6 @@ module csa_2_4bit(
 
 	ha half_4(wc[0],ws[0],wc[3],ot[1]);
 	fa full_1(wc[3],wc[1],ws[1],wc[4],ot[2]);
-	fa full_1(wc[4],wc[2],ib[3],ot[4],ot[3]);
+	fa full_2(wc[4],wc[2],ib[3],ot[4],ot[3]);
 
 endmodule
