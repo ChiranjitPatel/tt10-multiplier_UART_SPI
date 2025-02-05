@@ -1,6 +1,6 @@
 module csa_2_4bit(
-	ia,
 	ib,
+	ia,
 	ot
 	);
 	
