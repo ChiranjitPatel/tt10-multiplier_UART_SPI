@@ -2,7 +2,9 @@
 module i8bit_mul(
 	a, 
 	b, 
-	prod
+	// prod
+	prod_low,
+	prod_high
 );
 
 	input 	[7:0] a;
