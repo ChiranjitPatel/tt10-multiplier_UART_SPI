@@ -20,8 +20,11 @@ project:
     - "project.v"
     - "i2bit_mul.sv"
     - "i4bit_mul.sv"
+    - "i8bit_mul.sv"
     - "csa_1_4bit.sv"
+    - "csa_1_8bit.sv"
     - "csa_2_4bit.sv"
+    - "csa_2_8bit.sv"
     - "fa.sv"
     - "ha.sv"
 
