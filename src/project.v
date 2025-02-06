@@ -17,13 +17,21 @@ module tt_um_example (
 );
 
   // All output pins must be assigned. If not used, assign to 0.
-  i4bit_mul uut (
-	.a(ui_in[3:0]),
-	.b(ui_in[7:4]),
-	.s(uo_out[7:0])
+  // i4bit_mul uut (
+	// .a(ui_in[3:0]),
+	// .b(ui_in[7:4]),
+	// .s(uo_out[7:0])
+	// );
+	
+	i8bit_mul uut
+	(
+		.a(ui_in[7:0]),
+		.b(uio_in[7:0]),
+		.prod_low(uo_out[7:0]),
+		.prod_high(uio_out[7:0])
 	);
 	
-  assign uio_out = 0;
+  // assign uio_out = 0;
   assign uio_oe  = 0;
 
   // List all unused inputs to prevent warnings

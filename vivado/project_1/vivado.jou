@@ -1,0 +1,118 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Thu Feb  6 20:59:16 2025
+# Process ID: 14500
+# Current directory: D:/Github/tt10-test/vivado/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15284 D:\Github\tt10-test\vivado\project_1\project_1.xpr
+# Log file: D:/Github/tt10-test/vivado/project_1/vivado.log
+# Journal file: D:/Github/tt10-test/vivado/project_1\vivado.jou
+# Running On        :GHOST
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :19045
+# Processor Detail  :Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz
+# CPU Frequency     :2496 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :17041 MB
+# Swap memory       :1073 MB
+# Total Virtual     :18114 MB
+# Available Virtual :13059 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/Github/tt10-test/vivado/project_1/project_1.xpr
+update_compile_order -fileset sources_1
+launch_simulation
+source tb_i8bit_mul.tcl
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut}} 
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut/N4}} 
+restart
+run 10 ns
+run 10 ns
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut/N1}} 
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut/N2}} 
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut/N3}} 
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut/N4}} 
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut/C1}} 
+restart
+run 10 ns
+run 10 ns
+current_wave_config {Untitled 1}
+add_wave {{/tb_i8bit_mul/uut/C1}} 
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+save_wave_config {D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg}
+add_files -fileset sim_1 -norecurse D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg
+set_property xsim.view D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg [get_filesets sim_1]
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source tb_i8bit_mul.tcl
+restart
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+run 10 ns
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/tb_i8bit_mul/uut/C1/ha_5}} 
+restart
+run 70 ns
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/tb_i8bit_mul/uut/C1/fa_5}} 
+restart
+run 70 ns
+save_wave_config {D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source tb_i8bit_mul.tcl
+restart
+run 70 ns
+run 70 ns
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source tb_i8bit_mul.tcl
+restart
+run 70 ns
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/tb_i8bit_mul}} 
+run 70 ns
+restart
+run 70 ns
+save_wave_config {D:/Github/tt10-test/vivado/project_1/tb_i8bit_mul_behav.wcfg}
+close_sim

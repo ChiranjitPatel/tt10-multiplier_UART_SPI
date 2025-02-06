@@ -18,5 +18,3 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/i8bit
 INFO: [VRFC 10-311] analyzing module i8bit_mul
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/Github/tt10-test/src/tb_i8bit_mul.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module tb_i8bit_mul
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/Github/tt10-test/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl
