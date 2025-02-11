@@ -25,8 +25,8 @@ module tt_um_example (
 	
 	i8bit_mul uut
 	(
-		.a(ui_in[7:0]),
-		.b(uio_in[7:0]),
+		.mul_ip_A(ui_in[7:0]),
+		.mul_ip_B(uio_in[7:0]),
 		.prod_low(uo_out[7:0]),
 		.prod_high(uio_out[7:0])
 	);
