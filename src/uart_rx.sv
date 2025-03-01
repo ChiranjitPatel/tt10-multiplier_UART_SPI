@@ -18,21 +18,22 @@
 `timescale 1ns / 1ps
 
 module uart_rx  
-	#(	parameter [23:0] baud_rate = 24'd4000000, 
+	#(	//parameter [23:0] baud_rate = 24'd4000000, 
 		parameter [27:0]clock_freq = 28'd100000000 
 	)
-	(	uart_clock, uart_reset, uart_d_in, 
+	(	uart_clock, uart_reset, uart_d_in, baud_rate,
 		uart_d_out, uart_valid 				
 	);
 	
 	input  logic		uart_clock;
 	input  logic		uart_reset;
 	input  logic		uart_d_in;
+	input  logic[23:0]		baud_rate;
 	output logic[7:0] 	uart_d_out;
 	output logic		uart_valid;
 	
 	// localparam [19:0]	pulse_duration			=	clock_freq / baud_rate /2; // Divide by two to get the 52us delay, or total time
-	localparam [23:0]	pulse_duration			=	clock_freq / baud_rate;	// Delay for each bit TX, No need to divide by 2.
+	localparam [23:0]	pulse_duration			=	23'd10416; //clock_freq / baud_rate;	// Delay for each bit TX, No need to divide by 2.
 	localparam [23:0]	half_pulse_duration		=	pulse_duration / 2; // Delay of pulse is half of the frequency
 	localparam [3:0]	start_data_stop_width	=	4'd10;
 
