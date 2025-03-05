@@ -20,19 +20,19 @@
 module uart_tx 
 	# (	//parameter [23:0] baud_rate = 24'd4000000,
 		parameter [27:0]clock_freq = 28'd100000000 )
-	  ( uart_clock, uart_reset, uart_start, uart_d_in, baud_rate,
+	  ( uart_clock, uart_reset, uart_start, uart_d_in, freq_control,
 		uart_d_out, uart_tx_ready);
 		
 	input	logic			uart_clock;
 	input	logic			uart_reset;
 	input	logic			uart_start;
 	input	logic	[7:0]	uart_d_in;
-	input	logic	[23:0]	baud_rate;
+	input	logic	[1:0]	freq_control;
 	output	logic			uart_d_out;
 	output	logic			uart_tx_ready;
 	
 	// localparam [19:0]	pulse_duration			=	clock_freq / baud_rate /2;	// Delay for each bit TX, divide by 2 for the one cycle time
-	localparam [23:0]	pulse_duration			=	23'd10416; //clock_freq / baud_rate;	// Delay for each bit TX, No need to divide by 2.
+	// localparam [23:0]	pulse_duration			=	24'd10416; //clock_freq / baud_rate;	// Delay for each bit TX, No need to divide by 2.
 	localparam [3:0]	start_data_stop_width	=	4'd10;
 	
 	logic transmit_complete;
@@ -41,6 +41,8 @@ module uart_tx
 	logic [23:0] 	clk_count;
 	logic [1:0] 	edge_detect_reg;
 	logic [9:0] 	data_shift_reg;
+	logic [23:0] pulse_duration;
+	logic [23:0] baud_rate;
 	
 	typedef enum logic[1:0] {Init, Load_Data, Shift_Data} state_machine;
 	state_machine state;
@@ -50,8 +52,25 @@ module uart_tx
 	always_comb begin
 		uart_tx_ready = transmit_complete & tx_reg_ready;
 		uart_d_out	=	data_shift_reg[0];
+		
+		if (freq_control == 2'b00) begin
+			baud_rate = 24'd9600;
+			pulse_duration = 24'd5208;
+		end
+		else if (freq_control == 2'b01) begin
+			baud_rate = 24'd115000;
+			pulse_duration = 24'd434;
+		end
+		else if (freq_control == 2'b10) begin
+			baud_rate = 24'd1000000;
+			pulse_duration = 24'd50;
+		end
+		else begin
+			pulse_duration = 24'd12;
+			baud_rate = 24'd4000000;
+		end
 	end
-	
+
 	always_ff @(posedge uart_clock, negedge uart_reset) begin
 		if(!uart_reset) begin
 			state 				<= Init;

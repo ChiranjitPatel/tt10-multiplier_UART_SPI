@@ -3,10 +3,10 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Sat Mar  1 19:18:22 2025
-# Process ID: 15412
+# Start of session at: Wed Mar  5 23:11:14 2025
+# Process ID: 18424
 # Current directory: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7236 D:\Github\tt10-multiplier_UART_SPI\vivado\project_1\project_1.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18856 D:\Github\tt10-multiplier_UART_SPI\vivado\project_1\project_1.xpr
 # Log file: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/vivado.log
 # Journal file: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1\vivado.jou
 # Running On        :GHOST
@@ -19,44 +19,45 @@
 # Host memory       :17041 MB
 # Swap memory       :1073 MB
 # Total Virtual     :18114 MB
-# Available Virtual :9232 MB
+# Available Virtual :9379 MB
 #-----------------------------------------------------------
 start_gui
-oopen_project D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/project_1.xprupdate_compile_order -fileset sources_1
-set_property SOURCE_SET sources_1 [get_filesets sim_1]
-add_files -fileset sim_1 -norecurse D:/Github/tt10-multiplier_UART_SPI/src/uart_rx_tx_tb.sv
-update_compile_order -fileset sim_1
-# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
-set_property source_mgmt_mode None [current_project]
-set_property top uart_rx_tx_tb [get_filesets sim_1]
-set_property top_lib xil_defaultlib [get_filesets sim_1]
-# Re-enabling previously disabled source management mode.
-set_property source_mgmt_mode All [current_project]
-update_compile_order -fileset sim_1
-launch_simulation
-launch_simulation
-add_files -norecurse {D:/Github/tt10-multiplier_UART_SPI/src/uart_tx.sv D:/Github/tt10-multiplier_UART_SPI/src/uart_rx_tx.sv D:/Github/tt10-multiplier_UART_SPI/src/uart_rx.sv}
+open_project D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/project_1.xpr
 update_compile_order -fileset sources_1
-launch_simulation
-launch_simulation
-launch_simulation
 synth_design -top i8bit_mul -part xc7k70tfbv676-1 -lint 
-launch_simulation
-launch_simulation
-launch_simulation
-launch_simulation
 launch_simulation
 launch_simulation
 launch_simulation
 open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
 source uart_rx_tx_tb.tcl
-current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/uart_rx_tx_tb}} 
-current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/uart_rx_tx_tb/uut}} 
 restart
 run 350 us
-save_wave_config {D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg}
+relaunch_sim
+restart
+run 350 us
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
+run 350 us
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/uart_rx_tx_tb/uut/uart_tx_inst}} 
+restart
+run 350 us
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
 close_sim
 launch_simulation
 open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg

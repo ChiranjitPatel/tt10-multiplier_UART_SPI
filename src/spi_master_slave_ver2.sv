@@ -29,11 +29,33 @@ module spi_master_slave_ver2 (
 	
 
     // Param
-    localparam integer CLK_DIV = 10; 					// Divide the system clock to gen sclk
-    localparam integer CLK_DIV_BITS = $clog2(CLK_DIV);
+    // localparam integer CLK_DIV = 10; 					// Divide the system clock to gen sclk
+    // localparam integer CLK_DIV_BITS = $clog2(CLK_DIV);
     localparam integer WAIT_BITS = $clog2(5*CLK_DIV);
     localparam integer DATA_WIDTH = 8; 				// 32-bit SPI frame
     localparam integer DATA_WIDTH_BITS = $clog2(DATA_WIDTH); 				// 32-bit SPI frame
+
+	logic [2:0] CLK_DIV;
+	logic [7:0] CLK_DIV_BITS;
+
+	always_comb begin
+		if (freq_control == 2'b00) begin        // 50M - make clk 50M
+			CLK_DIV = 1;
+			CLK_DIV_BITS = $clog2(CLK_DIV);
+		end
+		else if (freq_control == 2'b01) begin   // 25M
+			CLK_DIV = 2;
+			CLK_DIV_BITS = $clog2(CLK_DIV);
+		end
+		else if (freq_control == 2'b10) begin   // 10M
+			CLK_DIV = 5;
+			CLK_DIV_BITS = $clog2(CLK_DIV);
+		end
+		else begin
+			CLK_DIV = 10;                       // 5M
+			CLK_DIV_BITS = $clog2(CLK_DIV);
+		end
+	end
 
 	// State machine
     typedef enum logic [1:0] {

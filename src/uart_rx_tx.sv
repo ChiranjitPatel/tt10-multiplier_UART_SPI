@@ -28,18 +28,8 @@ module uart_rx_tx
 	output logic uart_rx_valid;
 	output logic uart_tx_ready;
 	
-	logic [23:0] baud_rate;
 	
-	always_comb begin
-		if (freq_control == 2'b00)
-			baud_rate = 24'd9600;
-		else if (freq_control == 2'b01)
-			baud_rate = 24'd115000;
-		else if (freq_control == 2'b10)
-			baud_rate = 24'd1000000;
-		else
-			baud_rate = 24'd4000000;
-	end
+	
 		
 	// Instantiate uart_tx
 	uart_tx 
@@ -52,7 +42,7 @@ module uart_rx_tx
 		.uart_reset(uart_reset),
 		.uart_start(uart_tx_start),
 		.uart_d_in(uart_transmit_data),
-		.baud_rate(baud_rate),
+		.freq_control(freq_control),
 		.uart_d_out(uart_tx_d_out),
 		.uart_tx_ready(uart_tx_ready)
 	);
@@ -67,7 +57,7 @@ module uart_rx_tx
 		.uart_clock(clk_int),
 		.uart_reset(uart_reset),
 		.uart_d_in(uart_rx_d_in),
-		.baud_rate(baud_rate),
+		.freq_control(freq_control),
 		.uart_d_out(uart_received_data),
 		.uart_valid(uart_rx_valid)
 	);
