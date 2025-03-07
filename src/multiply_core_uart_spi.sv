@@ -62,10 +62,12 @@ module multiply_core_uart_spi
 
 	
 	// Instantiate the uart_rx_tx module
-    uart_rx_tx #(
-        .BAUD_RATE(BAUD_RATE),
-        .CLOCK_FREQ(CLOCK_FREQ)
-    ) uart_uut (
+    uart_rx_tx 
+	// #(
+        // // .BAUD_RATE(BAUD_RATE),
+        // .CLOCK_FREQ(CLOCK_FREQ)
+    // ) 
+	uart_uut (
         .clk_10ns(clk),
         .uart_clock(uart_clock_50M),
         .uart_reset(reset),
@@ -78,13 +80,21 @@ module multiply_core_uart_spi
         .uart_tx_ready(uart_tx_ready)
     );
 
-	// i8bit_mul multiplier_uut
-		// (
-		// .mul_ip_A(mul_ip_A), 
-		// .mul_ip_B(mul_ip_B), 
-		// .prod_low(prod_low),
-		// .prod_high(prod_high)
-		// );
+	spi_master_slave_ver2 (
+		.clk(clk),           
+		.reset(reset),
+		.slave_rx_start(slave_rx_start),
+		.slave_tx_start(slave_tx_start),
+		.input_reg_data(input_reg_data),
+		.dout_miso(dout_miso), 	
+		.freq_control,
+		.cs_bar(cs_bar),       
+		.sclk(sclk),
+		.din_mosi(din_mosi),	
+		.output_reg_data(output_reg_data),
+		.rx_valid(rx_valid),
+		.tx_done(tx_done)
+);
 	
 	i8bit_mul_interface multiplier_interface_uut
 		(

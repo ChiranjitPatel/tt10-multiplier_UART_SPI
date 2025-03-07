@@ -1,9 +1,9 @@
 `timescale 1ns / 1ps
 
 module uart_rx_tx 
-	#(  //parameter [23:0] BAUD_RATE = 24'd9600,
-		parameter [27:0] CLOCK_FREQ = 28'd100000000
-	)
+	// #(  //parameter [23:0] BAUD_RATE = 24'd9600,
+		// parameter [27:0] CLOCK_FREQ = 28'd100000000
+	// )
 	(	clk_int,
 		uart_reset,
 		uart_transmit_data,

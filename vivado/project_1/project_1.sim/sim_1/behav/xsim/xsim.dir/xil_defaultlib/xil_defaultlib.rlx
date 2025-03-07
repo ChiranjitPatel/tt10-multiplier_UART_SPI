@@ -2,6 +2,7 @@
 2020.2
 May 22 2024
 19:03:11
+D:/Github/tt10-multiplier_UART_SPI/src/tb_spi_master_slave.sv,1741365133,systemVerilog,,,,tb_spi_master_slave,,uvm,,,,,,
 D:/Github/tt10-multiplier_UART_SPI/src/uart_rx.sv,1741197832,systemVerilog,,D:/Github/tt10-multiplier_UART_SPI/src/uart_rx_tx.sv,,uart_rx,,uvm,,,,,,
 D:/Github/tt10-multiplier_UART_SPI/src/uart_rx_tx.sv,1741196415,systemVerilog,,D:/Github/tt10-multiplier_UART_SPI/src/uart_tx.sv,,uart_rx_tx,,uvm,,,,,,
 D:/Github/tt10-multiplier_UART_SPI/src/uart_rx_tx_tb.sv,1741197160,systemVerilog,,,,uart_rx_tx_tb,,uvm,,,,,,

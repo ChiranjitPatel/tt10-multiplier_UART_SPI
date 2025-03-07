@@ -1,0 +1,67 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Wed Mar  5 23:11:14 2025
+# Process ID: 18424
+# Current directory: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent18856 D:\Github\tt10-multiplier_UART_SPI\vivado\project_1\project_1.xpr
+# Log file: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/vivado.log
+# Journal file: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1\vivado.jou
+# Running On        :GHOST
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :19045
+# Processor Detail  :Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz
+# CPU Frequency     :2496 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :17041 MB
+# Swap memory       :1073 MB
+# Total Virtual     :18114 MB
+# Available Virtual :9379 MB
+#-----------------------------------------------------------
+start_gui
+open_project D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/project_1.xpr
+update_compile_order -fileset sources_1
+synth_design -top i8bit_mul -part xc7k70tfbv676-1 -lint 
+launch_simulation
+launch_simulation
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
+relaunch_sim
+restart
+run 350 us
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
+run 350 us
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/uart_rx_tx_tb/uut/uart_tx_inst}} 
+restart
+run 350 us
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
+close_sim
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source uart_rx_tx_tb.tcl
+restart
+run 350 us
+close_sim

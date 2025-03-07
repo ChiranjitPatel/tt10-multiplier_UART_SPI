@@ -18,9 +18,9 @@
 `timescale 1ns / 1ps
 
 module uart_rx  
-	#(	//parameter [23:0] baud_rate = 24'd4000000, 
-		parameter [27:0]clock_freq = 28'd100000000 
-	)
+	// #(	//parameter [23:0] baud_rate = 24'd4000000, 
+		// parameter [27:0]clock_freq = 28'd100000000 
+	// )
 	(	uart_clock, uart_reset, uart_d_in, freq_control,
 		uart_d_out, uart_valid 				
 	);
