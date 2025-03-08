@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 1ns
 
 module uart_rx_tx_tb;
 
@@ -20,9 +20,11 @@ module uart_rx_tx_tb;
     // Instantiate the uart_rx_tx module
 	        // .BAUD_RATE(BAUD_RATE),
 
-    uart_rx_tx #(
-        .CLOCK_FREQ(CLOCK_FREQ)
-    ) uut (
+    uart_rx_tx 
+	// #(
+        // .CLOCK_FREQ(CLOCK_FREQ)
+    // ) 
+	uut (
         .clk_int(clk_int),
         .uart_reset(uart_reset),
         .uart_transmit_data(uart_transmit_data),
@@ -62,27 +64,6 @@ module uart_rx_tx_tb;
         #(4 * CLK_PERIOD);
         uart_reset = 1;
 
-		freq_control = 2'b00;
-        // Start sending data in a loop
-        repeat (1) begin
-            // Simulate sending data
-            #50000; // Wait a bit before starting transmission
-            // uart_transmit_data = (uart_transmit_data == 8'h31) ? 8'h30 : 8'h31; // Toggle between ASCII '1' and '0'
-			uart_tx_start = 1'b1;
-            uart_transmit_data = 8'h02; // Toggle between ASCII '1' and '0'
-			wait(uart_tx_ready == 0);
-			uart_tx_start = 1'b0;
-            #10000; // Wait for a bit
-            
-            #50000; // Wait a bit before starting transmission
-            // uart_transmit_data = (uart_transmit_data == 8'h31) ? 8'h30 : 8'h31; // Toggle between ASCII '1' and '0'
-			uart_tx_start = 1'b1;
-            uart_transmit_data = 8'h0A; // Toggle between ASCII '1' and '0'
-			wait(uart_tx_ready == 0);
-			uart_tx_start = 1'b0;
-            #10000; // Wait for a bit
-        end
-        
 		freq_control = 2'b11;
         // Start sending data in a loop
         repeat (1) begin
@@ -103,6 +84,49 @@ module uart_rx_tx_tb;
 			uart_tx_start = 1'b0;
             #10000; // Wait for a bit
         end
+        
+		freq_control = 2'b10;
+        // Start sending data in a loop
+        repeat (1) begin
+            // Simulate sending data
+            #50000; // Wait a bit before starting transmission
+            // uart_transmit_data = (uart_transmit_data == 8'h31) ? 8'h30 : 8'h31; // Toggle between ASCII '1' and '0'
+			uart_tx_start = 1'b1;
+            uart_transmit_data = 8'h02; // Toggle between ASCII '1' and '0'
+			wait(uart_tx_ready == 0);
+			uart_tx_start = 1'b0;
+            #10000; // Wait for a bit
+            
+            #50000; // Wait a bit before starting transmission
+            // uart_transmit_data = (uart_transmit_data == 8'h31) ? 8'h30 : 8'h31; // Toggle between ASCII '1' and '0'
+			uart_tx_start = 1'b1;
+            uart_transmit_data = 8'h0A; // Toggle between ASCII '1' and '0'
+			wait(uart_tx_ready == 0);
+			uart_tx_start = 1'b0;
+            #10000; // Wait for a bit
+        end
+		
+		freq_control = 2'b00;
+        // Start sending data in a loop
+        repeat (1) begin
+            // Simulate sending data
+            #50000; // Wait a bit before starting transmission
+            // uart_transmit_data = (uart_transmit_data == 8'h31) ? 8'h30 : 8'h31; // Toggle between ASCII '1' and '0'
+			uart_tx_start = 1'b1;
+            uart_transmit_data = 8'h02; // Toggle between ASCII '1' and '0'
+			wait(uart_tx_ready == 0);
+			uart_tx_start = 1'b0;
+            #10000; // Wait for a bit
+            
+            #120000; // Wait a bit before starting transmission
+            // uart_transmit_data = (uart_transmit_data == 8'h31) ? 8'h30 : 8'h31; // Toggle between ASCII '1' and '0'
+			uart_tx_start = 1'b1;
+            uart_transmit_data = 8'h0A; // Toggle between ASCII '1' and '0'
+			wait(uart_tx_ready == 0);
+			uart_tx_start = 1'b0;
+            #10000; // Wait for a bit
+        end
+		
         // Allow enough time to observe multiple transmissions
         #(100 * CLK_PERIOD);
 		

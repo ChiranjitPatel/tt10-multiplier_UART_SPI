@@ -31,32 +31,27 @@ module spi_master_slave (
 	
 
     // Param
-    // localparam integer CLK_DIV = 10; 					// Divide the system clock to gen sclk
-    localparam integer WAIT_BITS = $clog2(2**4);
+    localparam integer WAIT_BITS = $clog2(2**6);
     localparam integer DATA_WIDTH = 16; 				// 32-bit SPI frame
     localparam integer DATA_WIDTH_BITS = $clog2(DATA_WIDTH); 				// 32-bit SPI frame
     
 
 	integer CLK_DIV;
-	// logic [7:0] CLK_DIV_BITS;
-
-	always_comb begin
-		if (freq_control == 2'b00) begin        // 50M - make clk 50M
-			CLK_DIV = 1;
-		end
-		else if (freq_control == 2'b01) begin   // 25M
-			CLK_DIV = 2;
-		end
-		else if (freq_control == 2'b10) begin   // 10M
-			CLK_DIV = 5;
-		end
-		else begin                                // 5M
-			CLK_DIV = 10;    		
-		end
-	end
-
-
-
+	
+	// Reg
+    logic [DATA_WIDTH-1:0] rx_shift_reg;
+    logic [DATA_WIDTH-1:0] tx_shift_reg;
+    logic [DATA_WIDTH_BITS:0] rx_bit_cnt; 							// 6-bit to count 32 bits
+    logic [DATA_WIDTH_BITS:0] tx_bit_cnt; 							// 6-bit to count 32 bits
+    logic sclk_en;
+    logic sclk_drive_edge;
+    logic tx_ena;
+    logic rx_ena;
+    logic rx_state_flag;
+    logic tx_state_flag;
+    logic [WAIT_BITS-1:0] wait_cnt;
+    logic [7:0] clk_div_cnt;
+	
 	// State machine
     typedef enum logic [1:0] {
         IDLE,
@@ -67,28 +62,26 @@ module spi_master_slave (
 
     state_t state;
 
-    // Reg
-    logic [DATA_WIDTH-1:0] rx_shift_reg;
-    logic [DATA_WIDTH-1:0] tx_shift_reg;
-    logic [DATA_WIDTH_BITS:0] rx_bit_cnt; 							// 6-bit to count 32 bits
-    logic [DATA_WIDTH_BITS:0] tx_bit_cnt; 							// 6-bit to count 32 bits
-    logic sclk_en;
-    logic tx_ena;
-    logic rx_ena;
-    logic rx_state_flag;
-    logic tx_state_flag;
-    logic [WAIT_BITS-1:0] wait_cnt;
-    // logic [CLK_DIV_BITS-1:0] clk_div_cnt;
-    logic [7:0] clk_div_cnt;
+	always_comb begin
+		if (freq_control == 2'b01)      		// 25MHz  
+			CLK_DIV = 0;
+		else if (freq_control == 2'b10)  		// 5MHz  
+			CLK_DIV = 4;
+		else if (freq_control == 2'b11)   		// 1MHz  
+			CLK_DIV = 24;
+		else                					// 1MHz                 
+			CLK_DIV = 24;
+	end
+
 
     // Clock gen
-    always_ff @(posedge clk or posedge reset) begin
-        if (reset) begin
-            clk_div_cnt <= CLK_DIV;
+    always_ff @(posedge clk or negedge reset) begin
+        if (~reset) begin
+            clk_div_cnt <= 0;
             sclk <= 1;
         end 
 		else if (sclk_en) begin
-            if (clk_div_cnt == CLK_DIV - 1) begin
+            if (clk_div_cnt == CLK_DIV) begin
                 clk_div_cnt <= 0;
                 sclk <= ~sclk;
             end 
@@ -103,8 +96,8 @@ module spi_master_slave (
     end
 
 	// State Machine
-    always_ff @(posedge clk or posedge reset) begin
-        if (reset) begin
+    always_ff @(posedge clk or negedge reset) begin
+        if (~reset) begin
             rx_bit_cnt <= 0;
             tx_bit_cnt <= 0;
             wait_cnt <= 0;
@@ -159,7 +152,8 @@ module spi_master_slave (
 					rx_valid <= 0;
 					tx_done <= 0;
 					
-					if (sclk == 0 && clk_div_cnt == 1 && tx_ena) begin
+					sclk_drive_edge <= sclk;
+					if ((sclk_drive_edge & ~sclk) && tx_ena) begin
 						if (tx_bit_cnt == DATA_WIDTH ) begin
 							tx_state_flag <= 1;
 						end 
@@ -170,7 +164,7 @@ module spi_master_slave (
 						end
                     end
 					
-					if (sclk == 1 && clk_div_cnt == 0) begin
+					if ((~sclk_drive_edge & sclk)) begin
 						rx_shift_reg <= {rx_shift_reg[DATA_WIDTH-2:0], dout_miso}; // Shift in output_reg_data from ADC	
 						if (rx_bit_cnt == DATA_WIDTH) begin
 							rx_state_flag <= 1;
@@ -190,12 +184,13 @@ module spi_master_slave (
 				end
 
 				FINISH: begin
-					if (sclk == 0 && clk_div_cnt == CLK_DIV-1) begin
+					if (clk_div_cnt == CLK_DIV) begin
 						rx_bit_cnt <= 0;
 						tx_bit_cnt <= 0;
 						wait_cnt <= 0;
 						tx_ena <= 0;
 						sclk_en <= 1;
+						sclk_drive_edge <= 1'b0;
 						cs_bar <= 0; 
 						rx_valid <= 1;
 						tx_done <= 1;
@@ -217,7 +212,7 @@ module spi_master_slave (
 					sclk_en <= 0; 
 					cs_bar <= 1; 
 					wait_cnt <= wait_cnt + 1;
-					if (wait_cnt == 5*CLK_DIV-1) begin
+					if (wait_cnt == 2*CLK_DIV) begin
 						wait_cnt <= 0;
 						state <= IDLE;
 					end

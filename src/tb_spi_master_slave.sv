@@ -56,8 +56,8 @@ module tb_spi_master_slave;
         end
 
         // Initialize signals
-        reset = 1;
-        freq_control = 2'b00;
+        reset = 0;
+        freq_control = 2'b11;
         slave_rx_start = 0;
         slave_tx_start = 0;
         dout_miso = 0;
@@ -66,7 +66,7 @@ module tb_spi_master_slave;
 
         // Wait for reset
         #200;
-		reset = 0;
+		reset = 1;
 
         // Simulate sending 16 frames of 16-bit output_reg_data
         for (i = 0; i <=15; i++) begin
@@ -85,7 +85,7 @@ module tb_spi_master_slave;
             // Load the next frame to be transmitted
             @(posedge clk);
 			slave_rx_start = 1;
-			freq_control = 2'b11;
+			freq_control = i;
 			
             @(posedge clk);
             slave_rx_start = 0;
@@ -114,11 +114,11 @@ module tb_spi_master_slave;
 
 			if (i==0) begin
 				slave_tx_start = 0;
-				#2000;
+				#10000;
 			end
 			else begin
 				dout_miso = 0;
-				#2000; // Delay between frames
+				#10000; // Delay between frames
 			end
 		end
 
