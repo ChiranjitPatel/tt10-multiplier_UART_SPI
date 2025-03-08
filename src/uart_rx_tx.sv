@@ -33,10 +33,10 @@ module uart_rx_tx
 		
 	// Instantiate uart_tx
 	uart_tx 
-	#(
-		// .baud_rate(BAUD_RATE),
-		.clock_freq(CLOCK_FREQ)
-	) 
+//	#(
+//		.baud_rate(BAUD_RATE),
+//		.clock_freq(CLOCK_FREQ)
+//	) 
 	uart_tx_inst (
 		.uart_clock(clk_int),
 		.uart_reset(uart_reset),
@@ -49,10 +49,10 @@ module uart_rx_tx
 
 	// Instantiate uart_rx 
 	uart_rx 
-	#(
-		// .baud_rate(BAUD_RATE),
-		.clock_freq(CLOCK_FREQ)
-	) 
+//	#(
+//		.baud_rate(BAUD_RATE),
+//		.clock_freq(CLOCK_FREQ)
+//	) 
 	uart_rx_inst (
 		.uart_clock(clk_int),
 		.uart_reset(uart_reset),

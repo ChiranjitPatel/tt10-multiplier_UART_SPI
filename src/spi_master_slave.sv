@@ -19,44 +19,39 @@ module spi_master_slave (
 	input	logic reset;		
 	input 	logic slave_rx_start;       		// rx_start spi transfer
 	input 	logic slave_tx_start;       		// tx_start spi transfer
-	input 	logic [7:0] input_reg_data; 		// 32-bit register output_reg_data write into slave
+	input 	logic [15:0] input_reg_data; 		// 32-bit register output_reg_data write into slave
 	input	logic dout_miso;        			// master In, Slave Out (Data from the ADC)
 	input   logic [1:0] freq_control;
 	output	logic cs_bar;       				// chip select, active low (to the ADC)
 	output	logic sclk;         				// spi clock - 10 MHz
 	output 	logic din_mosi;         			// spi output_reg_data out - ADC output_reg_data in
-	output	logic [7:0] output_reg_data;  		// output_reg_data 
+	output	logic [15:0] output_reg_data;  		// output_reg_data 
 	output	logic rx_valid;         			// output_reg_data rx valid signal
 	output 	logic tx_done;         				// spi tx completed flag
 	
 
     // Param
     // localparam integer CLK_DIV = 10; 					// Divide the system clock to gen sclk
-    // localparam integer CLK_DIV_BITS = $clog2(CLK_DIV);
-    localparam integer DATA_WIDTH = 8; 				// 32-bit SPI frame
+    localparam integer WAIT_BITS = $clog2(2**4);
+    localparam integer DATA_WIDTH = 16; 				// 32-bit SPI frame
     localparam integer DATA_WIDTH_BITS = $clog2(DATA_WIDTH); 				// 32-bit SPI frame
-    // localparam integer WAIT_BITS = $clog2(5*CLK_DIV);
+    
 
 	integer CLK_DIV;
-	integer WAIT_BITS;
 	// logic [7:0] CLK_DIV_BITS;
 
 	always_comb begin
 		if (freq_control == 2'b00) begin        // 50M - make clk 50M
 			CLK_DIV = 1;
-			WAIT_BITS = 3;
 		end
 		else if (freq_control == 2'b01) begin   // 25M
 			CLK_DIV = 2;
-			WAIT_BITS = 4;
 		end
 		else if (freq_control == 2'b10) begin   // 10M
 			CLK_DIV = 5;
-			WAIT_BITS = 5;
 		end
-		else begin
-			CLK_DIV = 10;    
-			WAIT_BITS = 6;			// 5M
+		else begin                                // 5M
+			CLK_DIV = 10;    		
 		end
 	end
 
@@ -89,7 +84,7 @@ module spi_master_slave (
     // Clock gen
     always_ff @(posedge clk or posedge reset) begin
         if (reset) begin
-            clk_div_cnt <= CLK_DIV - 1;
+            clk_div_cnt <= CLK_DIV;
             sclk <= 1;
         end 
 		else if (sclk_en) begin
@@ -98,7 +93,7 @@ module spi_master_slave (
                 sclk <= ~sclk;
             end 
 			else begin
-                clk_div_cnt <= clk_div_cnt + 1;
+                clk_div_cnt <= clk_div_cnt + 1'b1;
             end
         end 
 		else begin
