@@ -80,7 +80,7 @@ module multiply_core_uart_spi
         .uart_tx_ready(uart_tx_ready)
     );
 
-	spi_master_slave_ver2 (
+	spi_master_slave (
 		.clk(clk),           
 		.reset(reset),
 		.slave_rx_start(slave_rx_start),
