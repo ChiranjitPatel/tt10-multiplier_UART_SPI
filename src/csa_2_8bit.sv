@@ -8,8 +8,8 @@ input [7:0]ia;
 input [4:0]ib;
 output [7:0]ot;
 
-wire [12:0]wc;
-wire [6:0]ws;
+wire [10:0]wc;
+wire [3:0]ws;
 
 ha ha_1(ia[0],ib[0],wc[0],ot[0]);
 ha ha_2(ia[1],ib[1],wc[1],ws[0]);

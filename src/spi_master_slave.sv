@@ -3,13 +3,13 @@ module spi_master_slave (
     reset,
 	slave_rx_start,
 	slave_tx_start,
-	input_reg_data,
-    dout_miso, 	
+	miso_reg_data,
+    mosi, 	
 	freq_control,
     cs_bar,       
     sclk,
-	din_mosi,	
-    output_reg_data,
+	miso,	
+    mosi_reg_data,
     rx_valid,
 	tx_done
 );
@@ -19,14 +19,14 @@ module spi_master_slave (
 	input	logic reset;		
 	input 	logic slave_rx_start;       		// rx_start spi transfer
 	input 	logic slave_tx_start;       		// tx_start spi transfer
-	input 	logic [15:0] input_reg_data; 		// 32-bit register output_reg_data write into slave
-	input	logic dout_miso;        			// master In, Slave Out (Data from the ADC)
-	input   logic [1:0] freq_control;
-	output	logic cs_bar;       				// chip select, active low (to the ADC)
+	input 	logic [15:0] miso_reg_data; 		// 16-bit register mosi_reg_data write into slave
+	input	logic mosi;        					// master In, Slave Out (Data from the ADC)
+	input   logic [1:0] freq_control;			// Clock freq selection for sclk
+	input	logic cs_bar;       				// chip select, active low (to the ADC)
 	output	logic sclk;         				// spi clock - 10 MHz
-	output 	logic din_mosi;         			// spi output_reg_data out - ADC output_reg_data in
-	output	logic [15:0] output_reg_data;  		// output_reg_data 
-	output	logic rx_valid;         			// output_reg_data rx valid signal
+	output 	logic miso;         			// spi mosi_reg_data out - ADC mosi_reg_data in
+	output	logic [15:0] mosi_reg_data;  		// mosi_reg_data 
+	output	logic rx_valid;         			// mosi_reg_data rx valid signal
 	output 	logic tx_done;         				// spi tx completed flag
 	
 
@@ -53,13 +53,7 @@ module spi_master_slave (
     logic [7:0] clk_div_cnt;
 	
 	// State machine
-    typedef enum logic [1:0] {
-        IDLE,
-        TRANSFER,
-        FINISH, 
-		WAIT
-    } state_t;
-
+    typedef enum logic [1:0] {IDLE, TRANSFER, FINISH, WAIT_NEXT} state_t;
     state_t state;
 
 	always_comb begin
@@ -100,8 +94,7 @@ module spi_master_slave (
         if (~reset) begin
             rx_bit_cnt <= 0;
             tx_bit_cnt <= 0;
-            wait_cnt <= 0;
-            cs_bar <= 1; 			
+            wait_cnt <= 0; 			
             sclk_en <= 0;
             rx_shift_reg <= 0;
             tx_shift_reg <= 0;
@@ -111,8 +104,8 @@ module spi_master_slave (
 			tx_done <= 0;
 			rx_state_flag <= 0;
 			tx_state_flag <= 0;
-			output_reg_data <= 0;
-			din_mosi <= 0;
+			mosi_reg_data <= 0;
+			miso <= 0;
 			
 			state <= IDLE;
         end
@@ -120,14 +113,13 @@ module spi_master_slave (
 		else begin
 			case (state)
 				IDLE: begin
-					if (slave_rx_start | slave_tx_start) begin
-						cs_bar <= 1; 		
+					if ((slave_rx_start | slave_tx_start) & cs_bar) begin		
 						sclk_en <= 1; 
 						rx_bit_cnt <= 0;
 						tx_bit_cnt <= 0;
 						wait_cnt <= 0;
-						rx_shift_reg <= {rx_shift_reg[DATA_WIDTH-2:0], dout_miso};
-						tx_shift_reg <= input_reg_data;
+						rx_shift_reg <= {rx_shift_reg[DATA_WIDTH-2:0], mosi};
+						tx_shift_reg <= miso_reg_data;
 						rx_valid <= 0;
 						tx_done <= 0;
 						rx_state_flag <= 0;
@@ -146,8 +138,7 @@ module spi_master_slave (
 					end
 				end
 
-				TRANSFER: begin
-					cs_bar <= 0; 		
+				TRANSFER: begin		
 					sclk_en <= 1;
 					rx_valid <= 0;
 					tx_done <= 0;
@@ -159,13 +150,13 @@ module spi_master_slave (
 						end 
 						else begin
 							tx_bit_cnt <= tx_bit_cnt + 1;
-							din_mosi <= tx_shift_reg[(DATA_WIDTH - 1) - tx_bit_cnt]; // Load output_reg_data on the low level of sclk
+							miso <= tx_shift_reg[(DATA_WIDTH - 1) - tx_bit_cnt]; // Load mosi_reg_data on the low level of sclk
 							tx_state_flag <= 0;					
 						end
                     end
 					
 					if ((~sclk_drive_edge & sclk)) begin
-						rx_shift_reg <= {rx_shift_reg[DATA_WIDTH-2:0], dout_miso}; // Shift in output_reg_data from ADC	
+						rx_shift_reg <= {rx_shift_reg[DATA_WIDTH-2:0], mosi}; // Shift in mosi_reg_data from ADC	
 						if (rx_bit_cnt == DATA_WIDTH) begin
 							rx_state_flag <= 1;
 						end
@@ -191,33 +182,31 @@ module spi_master_slave (
 						tx_ena <= 0;
 						sclk_en <= 1;
 						sclk_drive_edge <= 1'b0;
-						cs_bar <= 0; 
 						rx_valid <= 1;
 						tx_done <= 1;
-						output_reg_data <= rx_shift_reg[DATA_WIDTH-1:0];
-						din_mosi <= 0;
+						mosi_reg_data <= rx_shift_reg[DATA_WIDTH-1:0];
+						miso <= 0;
 						tx_shift_reg <= 0;
 						rx_state_flag <= 0;
 						tx_state_flag <= 0;
 						
-						state <= WAIT;
+						state <= WAIT_NEXT;
 					end
 					else begin
 						state <= FINISH;
 					end
 				end				
 
-				// Add the additional wait time between the output_reg_data frames for better reception of output_reg_data to the ADC
-				WAIT: begin
+				// Add the additional wait time between the mosi_reg_data frames for better reception of mosi_reg_data to the ADC
+				WAIT_NEXT: begin
 					sclk_en <= 0; 
-					cs_bar <= 1; 
 					wait_cnt <= wait_cnt + 1;
 					if (wait_cnt == 2*CLK_DIV) begin
 						wait_cnt <= 0;
 						state <= IDLE;
 					end
 					else begin
-						state <= WAIT;
+						state <= WAIT_NEXT;
 					end
                 end
 				

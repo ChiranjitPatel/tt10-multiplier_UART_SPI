@@ -28,7 +28,7 @@ module uart_rx
 	input  logic		uart_clock;
 	input  logic		uart_reset;
 	input  logic		uart_d_in;
-	input  logic[1:0]		freq_control;
+	input  logic[1:0]	freq_control;
 	output logic[7:0] 	uart_d_out;
 	output logic		uart_valid;
 	
@@ -44,31 +44,31 @@ module uart_rx
 	logic [start_data_stop_width-1:0] 	data_buffer;
 	logic [1:0] 						edge_detect_reg;
 	logic [23:0] pulse_duration;
-	logic [23:0]	half_pulse_duration;
-	logic [23:0] baud_rate;
+	logic [23:0] half_pulse_duration;
+	// logic [23:0] baud_rate;
 	
 	typedef enum logic [1:0] {Init, Start_Read, Read_Data, Finish} state_machine;
 	state_machine state;
 	
 	always_comb begin
 		if (freq_control == 2'b00) begin
-			baud_rate = 24'd9600;
+			// baud_rate = 24'd9600;
 			pulse_duration = 24'd5208;
 			half_pulse_duration = pulse_duration / 2;
 		end
 		else if (freq_control == 2'b01) begin
-			baud_rate = 24'd115000;
+			// baud_rate = 24'd115000;
 			pulse_duration = 24'd434;
 			half_pulse_duration = pulse_duration / 2;
 		end
 		else if (freq_control == 2'b10) begin
-			baud_rate = 24'd1000000;
+			// baud_rate = 24'd1000000;
 			pulse_duration = 24'd50;
 			half_pulse_duration = pulse_duration / 2;
 		end
 		else begin
 			pulse_duration = 24'd12;
-			baud_rate = 24'd4000000;
+			// baud_rate = 24'd4000000;
 			half_pulse_duration = pulse_duration / 2;
 		end
 	end

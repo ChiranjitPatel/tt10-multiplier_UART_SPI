@@ -42,7 +42,7 @@ module uart_tx
 	logic [1:0] 	edge_detect_reg;
 	logic [9:0] 	data_shift_reg;
 	logic [23:0] pulse_duration;
-	logic [23:0] baud_rate;
+	// logic [23:0] baud_rate;
 	
 	typedef enum logic[1:0] {Init, Load_Data, Shift_Data} state_machine;
 	state_machine state;
@@ -54,20 +54,20 @@ module uart_tx
 		uart_d_out	=	data_shift_reg[0];
 		
 		if (freq_control == 2'b00) begin
-			baud_rate = 24'd9600;
+			// baud_rate = 24'd9600;
 			pulse_duration = 24'd5208;
 		end
 		else if (freq_control == 2'b01) begin
-			baud_rate = 24'd115000;
+			// baud_rate = 24'd115000;
 			pulse_duration = 24'd434;
 		end
 		else if (freq_control == 2'b10) begin
-			baud_rate = 24'd1000000;
+			// baud_rate = 24'd1000000;
 			pulse_duration = 24'd50;
 		end
 		else begin
+			// baud_rate = 24'd4000000;
 			pulse_duration = 24'd12;
-			baud_rate = 24'd4000000;
 		end
 	end
 
