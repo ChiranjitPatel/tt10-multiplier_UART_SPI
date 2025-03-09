@@ -1,0 +1,138 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sat Mar  8 21:53:37 2025
+# Process ID: 16748
+# Current directory: C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent2068 C:\Users\ADMIN\Documents\GitHub\tt10-multiplier_UART_SPI\vivado\project_1\project_1.xpr
+# Log file: C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/vivado.log
+# Journal file: C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1\vivado.jou
+# Running On        :DESKTOP-0V02RSJ
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :Intel(R) Core(TM) i7-10610U CPU @ 1.80GHz
+# CPU Frequency     :2304 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :16924 MB
+# Swap memory       :1749 MB
+# Total Virtual     :18673 MB
+# Available Virtual :9599 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/project_1.xpr
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top spi_master_slave [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+synth_design -top spi_master_slave -part xc7k70tfbv676-1 -lint 
+synth_design -top spi_master_slave -part xc7k70tfbv676-1 -lint 
+synth_design -top spi_master_slave -part xc7k70tfbv676-1 -lint 
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+close_design
+launch_simulation
+open_wave_config C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source tb_spi_master_slave.tcl
+restart
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/tb_spi_master_slave}} 
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/tb_spi_master_slave/uut}} 
+run 1000 us
+save_wave_config {C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg}
+relaunch_sim
+restart
+run 10 us
+relaunch_sim
+restart
+run 10 us
+relaunch_sim
+restart
+run 10 us
+relaunch_sim
+relaunch_sim
+restart
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+restart
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+relaunch_sim
+restart
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+relaunch_sim
+restart
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+restart
+relaunch_sim
+restart
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+restart
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+restart
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+run 10 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source tb_spi_master_slave.tcl
+restart
+run 10 us
+run 10 us
+run 10 us
+relaunch_sim
+close_sim
+launch_simulation
+open_wave_config C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source tb_spi_master_slave.tcl
+restart
+run 10 us
+run 10 us
+run 10 us
+close_sim
