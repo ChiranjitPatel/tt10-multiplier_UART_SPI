@@ -8,12 +8,8 @@ module tb_spi_slave;
     logic clk;
     logic reset;
     logic spi_start;
-    // logic slave_tx_start;
     logic [15:0] miso_reg_data;
     logic mosi;
-	// logic [1:0] freq_control;
-	// logic loopback;    
-    // logic mosi_ext;
 	logic cs_bar;
     logic sclk;
     logic miso;
@@ -26,12 +22,8 @@ module tb_spi_slave;
         .clk(clk),
         .reset(reset),
 		.spi_start(spi_start),
-		// .slave_tx_start(slave_tx_start),
 		.miso_reg_data(miso_reg_data),
 		.mosi(mosi),
-		// .freq_control(freq_control),
-		// .loopback(loopback),
-		// .mosi_ext(mosi_ext),
         .cs_bar(cs_bar),
         .sclk(sclk),
         .miso(miso),
