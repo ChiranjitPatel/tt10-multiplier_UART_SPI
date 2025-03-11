@@ -78,14 +78,12 @@ module multiply_core_uart_spi
         .uart_tx_ready(uart_tx_ready)
     );
 
-	spi_master_slave spi_uut (
+	spi_slave spi_uut (
 		.clk(clk),           
 		.reset(reset),
-		.slave_rx_start(slave_rx_start),
-		.slave_tx_start(slave_tx_start),
+		.spi_start(spi_start),
 		.miso_reg_data(miso_reg_data),
-		.mosi(mosi), 	
-		.freq_control(freq_control),
+		.mosi(mosi),
 		.cs_bar(cs_bar),       
 		.sclk(sclk),
 		.miso(miso),	

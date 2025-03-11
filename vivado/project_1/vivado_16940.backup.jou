@@ -3,10 +3,10 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Sun Mar  9 19:05:09 2025
-# Process ID: 9972
+# Start of session at: Sun Mar  9 23:14:45 2025
+# Process ID: 16940
 # Current directory: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1
-# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent9532 D:\Github\tt10-multiplier_UART_SPI\vivado\project_1\project_1.xpr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent1808 D:\Github\tt10-multiplier_UART_SPI\vivado\project_1\project_1.xpr
 # Log file: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/vivado.log
 # Journal file: D:/Github/tt10-multiplier_UART_SPI/vivado/project_1\vivado.jou
 # Running On        :GHOST
@@ -19,81 +19,58 @@
 # Host memory       :17041 MB
 # Swap memory       :1073 MB
 # Total Virtual     :18114 MB
-# Available Virtual :9880 MB
+# Available Virtual :9601 MB
 #-----------------------------------------------------------
 start_gui
 open_project D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/project_1.xpr
 update_compile_order -fileset sources_1
-set_property SOURCE_SET sources_1 [get_filesets sim_1]
-add_files -fileset sim_1 -norecurse D:/Github/tt10-multiplier_UART_SPI/src/i8bit_mul_interface_tb.sv
-update_compile_order -fileset sim_1
+launch_simulation
+open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
+source multiply_core_uart_spi.tcl
+restart
+run 200 ns
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/multiply_core_uart_spi}} 
 # Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
 set_property source_mgmt_mode None [current_project]
-set_property top i8bit_mul_interface_tb [get_filesets sim_1]
+set_property top tb_i8bit_mul_interface [get_filesets sim_1]
 set_property top_lib xil_defaultlib [get_filesets sim_1]
 # Re-enabling previously disabled source management mode.
 set_property source_mgmt_mode All [current_project]
 update_compile_order -fileset sim_1
 launch_simulation
-add_files -norecurse D:/Github/tt10-multiplier_UART_SPI/src/i8bit_mul_interface.sv
-launch_simulation
-launch_simulation
-open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
-source i8bit_mul_interface_tb.tcl
-restart
-current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/i8bit_mul_interface_tb}} 
-current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/i8bit_mul_interface_tb/dut/i8bit_mul_uut}} 
-run 350 ns
-run 350 ns
-run 350 ns
-run 350 ns
-run 350 ns
-save_wave_config {D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg}
 close_sim
 launch_simulation
-launch_simulation
 open_wave_config D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg
-source i8bit_mul_interface_tb.tcl
-restart
-run 350 ns
+source tb_i8bit_mul_interface.tcl
 current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/i8bit_mul_interface_tb/dut}} 
-restart
-run 350 ns
+add_wave {{/tb_i8bit_mul_interface}} 
 current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/i8bit_mul_interface_tb}} 
+add_wave {{/tb_i8bit_mul_interface/dut/i8bit_mul_uut}} 
+restart
+run 200 ns
+relaunch_sim
+restart
+run 200 ns
 current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/i8bit_mul_interface_tb/dut}} 
-relaunch_sim
+add_wave {{/tb_i8bit_mul_interface/dut}} 
 restart
-run 350 ns
-relaunch_sim
-restart
-run 350 ns
-relaunch_sim
-restart
-run 350 ns
+run 200 ns
 relaunch_sim
 relaunch_sim
 restart
-run 350 ns
+run 200 ns
+relaunch_sim
+restart
+run 200 ns
 current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/i8bit_mul_interface_tb/dut}} 
+add_wave {{/tb_i8bit_mul_interface}} 
 current_wave_config {tb_i8bit_mul_behav.wcfg}
-add_wave {{/i8bit_mul_interface_tb/dut/i8bit_mul_uut}} 
+add_wave {{/tb_i8bit_mul_interface/dut/i8bit_mul_uut}} 
 restart
-run 350 ns
-relaunch_sim
-restart
-run 350 ns
-restart
-run 150 ns
-run 150 ns
-relaunch_sim
-relaunch_sim
-relaunch_sim
+run 200 ns
+current_wave_config {tb_i8bit_mul_behav.wcfg}
+add_wave {{/tb_i8bit_mul_interface/dut}} 
 restart
 run 200 ns
 relaunch_sim
@@ -112,18 +89,21 @@ relaunch_sim
 restart
 run 200 ns
 relaunch_sim
-restart
-run 200 ns
+relaunch_sim
 restart
 run 200 ns
 relaunch_sim
 restart
 run 200 ns
-set_property SOURCE_SET sources_1 [get_filesets sim_1]
-add_files -fileset sim_1 -norecurse D:/Github/tt10-multiplier_UART_SPI/src/tb_i8bit_mul_interface.sv
+relaunch_sim
+restart
+run 200 ns
+run 200 ns
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top uart_rx_tx_tb [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
 update_compile_order -fileset sim_1
-export_ip_user_files -of_objects  [get_files D:/Github/tt10-multiplier_UART_SPI/src/i8bit_mul_interface_tb.sv] -no_script -reset -force -quiet
-remove_files  -fileset sim_1 D:/Github/tt10-multiplier_UART_SPI/src/i8bit_mul_interface_tb.sv
-save_wave_config {D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/tb_i8bit_mul_behav.wcfg}
 close_sim
-update_compile_order -fileset sim_1
