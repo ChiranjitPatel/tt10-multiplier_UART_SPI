@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+// `timescale 1ns / 1ps
 
 module uart_rx_tx_loopback 
 	// #(  //parameter [23:0] BAUD_RATE = 24'd9600,
