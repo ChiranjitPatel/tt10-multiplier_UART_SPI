@@ -9,11 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-This project is a binary vedic 8bit multiplier with UART and SPI
+This is a combined module with working UART and SPI protocols.
+UART has a selsction of 
 
 ## How to test
 
-This project is a binary vedic 8bit multiplier with UART and SPI
+
 
 ## External hardware
 
