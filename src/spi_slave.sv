@@ -29,7 +29,7 @@ module spi_slave (
 	
 
     // Param
-    localparam integer WAIT_BITS = $clog2(2**6);
+    // localparam integer WAIT_BITS = $clog2(2**6);
     localparam integer DATA_WIDTH = 16; 							// 32-bit SPI frame
     localparam integer DATA_WIDTH_BITS = $clog2(DATA_WIDTH); 		// 32-bit SPI frame
 	
