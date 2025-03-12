@@ -11,18 +11,29 @@ project:
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_uart_spi"
+  top_module:  "tt_um_multiplier"
+  # top_module:  "tt_um_uart_spi"
 
   # List your project's source files here.
   # Source files must be in ./src and you must list each source file separately, one per line.
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "project.v"
-    - "uart_spi_top.sv"
-    - "uart_rx_tx_loopback.sv"
-    - "uart_rx.sv"
-    - "uart_tx.sv"
-    - "spi_slave.sv"
+    - "csa_1_4bit.sv"
+    - "csa_2_4bit.sv"
+    - "csa_1_8bit.sv"
+    - "csa_2_8bit.sv"
+    - "ha.sv"
+    - "fa.sv"
+    - "i2bit_mul.sv"
+    - "i4bit_mul.sv"
+    - "i8bit_mul.sv"
+    
+    # - "uart_spi_top.sv"
+    # - "uart_rx_tx_loopback.sv"
+    # - "uart_rx.sv"
+    # - "uart_tx.sv"
+    # - "spi_slave.sv"
  
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
