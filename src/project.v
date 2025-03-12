@@ -37,6 +37,7 @@ module tt_um_uart_spi (
 	
   assign uio_out = 0;
   assign uio_oe  = 0;
+  assign uo_out[7:6]  = 0;
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, uio_in, 1'b0};

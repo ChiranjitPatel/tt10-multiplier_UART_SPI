@@ -2,7 +2,7 @@ module spi_slave (
     clk,           
     reset,
 	spi_start,
-	miso_reg_data,
+	// miso_reg_data,
     mosi, 	
     cs_bar,       
     sclk,
@@ -16,7 +16,7 @@ module spi_slave (
 	input	logic clk;           				// Internal clock
 	input	logic reset;		
 	input 	logic spi_start;       				// rx_start spi transfer
-	input 	logic [15:0] miso_reg_data; 		// 16-bit register mosi_reg_data write into slave
+	// input 	logic [15:0] miso_reg_data; 		// 16-bit register mosi_reg_data write into slave
 	input	logic mosi;        					// master In, Slave Out (Data from the ADC)
 	input	logic cs_bar;       				// chip select, active low (to the ADC)
 	input	logic sclk;         				// spi clock - 10 MHz

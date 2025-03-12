@@ -36,7 +36,7 @@ module uart_spi_top
 	output logic spi_tx_done;
 	// output logic frames_received;
 
-    logic [7:0] miso_reg_data;
+    // logic [7:0] miso_reg_data;
     logic [7:0] mosi_reg_data;
 
 	
@@ -57,7 +57,7 @@ module uart_spi_top
 		.clk(clk),           
 		.reset(reset),
 		.spi_start(spi_start),
-		.miso_reg_data(miso_reg_data),
+		// .miso_reg_data(miso_reg_data),
 		.mosi(mosi),
 		.cs_bar(cs_bar),       
 		.sclk(sclk),
