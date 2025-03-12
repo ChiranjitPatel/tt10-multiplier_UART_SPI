@@ -55,7 +55,7 @@ module spi_slave (
 			tx_done <= 0;
 			rx_state_flag <= 0;
 			tx_state_flag <= 0;
-			mosi_reg_data <= 0;
+			// mosi_reg_data <= 0;
 			miso <= 0;
 			sclk_drive_edge <= sclk;
 			state <= IDLE;
