@@ -1,18 +1,11 @@
 Vivado Simulator v2024.1
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: D:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_spi_slave_behav xil_defaultlib.tb_spi_slave xil_defaultlib.glbl -log elaborate.log 
+Running: D:/SOFTWARES/vivado2024/install/Vivado/2024.1/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_uart_spi_top_behav xil_defaultlib.tb_uart_spi_top xil_defaultlib.glbl -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3823] variable 'mosi_reg_data' might have multiple concurrent drivers [C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/src/tb_spi_slave.sv:58]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 16 for port 'miso_reg_data' [D:/Github/tt10-multiplier_UART_SPI/src/uart_spi_top.sv:60]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 16 for port 'mosi_reg_data' [D:/Github/tt10-multiplier_UART_SPI/src/uart_spi_top.sv:65]
 Completed static elaboration
-Starting simulation data flow analysis
-WARNING: [XSIM 43-4100] "C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
-WARNING: [XSIM 43-4100] "C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.spi_slave_default
-Compiling module xil_defaultlib.tb_spi_slave
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot tb_spi_slave_behav
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

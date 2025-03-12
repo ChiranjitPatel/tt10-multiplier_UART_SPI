@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_multiplier (
+module tt_um_uart_spi (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -16,25 +16,29 @@ module tt_um_multiplier (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  // All output pins must be assigned. If not used, assign to 0.
-  // i4bit_mul uut (
-	// .a(ui_in[3:0]),
-	// .b(ui_in[7:4]),
-	// .s(uo_out[7:0])
-	// );
-	
-	i8bit_mul uut
+	uart_spi_top top_uut	
 	(
-		.mul_ip_A(ui_in[7:0]),
-		.mul_ip_B(uio_in[7:0]),
-		.prod_low(uo_out[7:0]),
-		.prod_high(uio_out[7:0])
+		.clk(clk),
+		.reset(rst_n),
+		.freq_control(ui_in[1:0]),
+		.uart_rx_d_in(ui_in[2]),
+		.uart_tx_start(ui_in[3]),
+		.cs_bar(ui_in[4]),
+		.sclk(ui_in[5]),
+		.mosi(ui_in[6]),
+		.spi_start(ui_in[7]),
+		.uart_tx_d_out(uo_out[0]),
+		.miso(uo_out[1]),
+		.uart_rx_valid(uo_out[2]),
+		.uart_tx_ready(uo_out[3]),
+		.spi_rx_valid(uo_out[4]),
+		.spi_tx_done(uo_out[5])
 	);
 	
-  // assign uio_out = 0;
+  assign uio_out = 0;
   assign uio_oe  = 0;
 
   // List all unused inputs to prevent warnings
-  wire _unused = &{ena, clk, rst_n, 1'b0};
+  wire _unused = &{ena, uio_in, 1'b0};
 
 endmodule

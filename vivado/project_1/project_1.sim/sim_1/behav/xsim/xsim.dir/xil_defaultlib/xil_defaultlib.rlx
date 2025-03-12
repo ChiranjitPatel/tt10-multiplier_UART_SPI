@@ -2,6 +2,11 @@
 2020.2
 May 22 2024
 19:03:11
-C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/src/spi_slave.sv,1741556164,systemVerilog,,C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/src/tb_spi_slave.sv,,spi_slave,,uvm,,,,,,
-C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/src/tb_spi_slave.sv,1741556266,systemVerilog,,,,tb_spi_slave,,uvm,,,,,,
-C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v,1740907682,verilog,,,,glbl,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/src/spi_slave.sv,1741795812,systemVerilog,,D:/Github/tt10-multiplier_UART_SPI/src/uart_rx.sv,,spi_slave,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/src/tb_spi_slave.sv,1741718076,systemVerilog,,,,tb_spi_slave,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/src/tb_uart_spi_top.sv,1741797696,systemVerilog,,,,tb_uart_spi_top,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/src/uart_rx.sv,1741526622,systemVerilog,,D:/Github/tt10-multiplier_UART_SPI/src/uart_rx_tx_loopback.sv,,uart_rx,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/src/uart_rx_tx_loopback.sv,1741716892,systemVerilog,,D:/Github/tt10-multiplier_UART_SPI/src/uart_spi_top.sv,,uart_rx_tx_loopback,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/src/uart_spi_top.sv,1741797625,systemVerilog,,D:/Github/tt10-multiplier_UART_SPI/src/uart_tx.sv,,uart_spi_top,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/src/uart_tx.sv,1741526622,systemVerilog,,D:/Github/tt10-multiplier_UART_SPI/src/tb_uart_spi_top.sv,,uart_tx,,uvm,,,,,,
+D:/Github/tt10-multiplier_UART_SPI/vivado/project_1/project_1.sim/sim_1/behav/xsim/glbl.v,1739292260,verilog,,,,glbl,,uvm,,,,,,

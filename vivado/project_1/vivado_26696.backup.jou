@@ -1,0 +1,27 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Mon Mar 10 23:06:13 2025
+# Process ID: 26696
+# Current directory: C:/Users/vivek/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24500 C:\Users\vivek\Documents\GitHub\tt10-multiplier_UART_SPI\vivado\project_1\project_1.xpr
+# Log file: C:/Users/vivek/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/vivado.log
+# Journal file: C:/Users/vivek/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1\vivado.jou
+# Running On        :OMEGA_NUS
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :26100
+# Processor Detail  :12th Gen Intel(R) Core(TM) i7-12700H
+# CPU Frequency     :2688 MHz
+# CPU Physical cores:14
+# CPU Logical cores :20
+# Host memory       :42660 MB
+# Swap memory       :9126 MB
+# Total Virtual     :51787 MB
+# Available Virtual :37843 MB
+#-----------------------------------------------------------
+start_gui
+open_project -part xc7a35tcpg236-1 C:/Users/vivek/Documents/GitHub/tt10-multiplier_UART_SPI/vivado/project_1/project_1.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1

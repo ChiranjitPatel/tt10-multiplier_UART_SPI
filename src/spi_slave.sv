@@ -71,7 +71,7 @@ module spi_slave (
 									tx_bit_cnt <= 0;
 									wait_cnt <= 0;
 									rx_shift_reg <= {rx_shift_reg[DATA_WIDTH-2:0], mosi};
-									tx_shift_reg <= miso_reg_data;
+									tx_shift_reg <= rx_shift_reg;
 									rx_valid <= 0;
 									tx_done <= 0;
 									rx_state_flag <= 0;
@@ -96,6 +96,7 @@ module spi_slave (
 									end 
 									else begin
 										tx_bit_cnt <= tx_bit_cnt + 1;
+										// tx_shift_reg <= miso_reg_data;
 										miso <= tx_shift_reg[(DATA_WIDTH - 1) - tx_bit_cnt]; // Load out miso_reg_data Tx
 										tx_state_flag <= 0;					
 									end

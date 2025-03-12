@@ -1,4 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/src/spi_slave.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module spi_slave
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Users/ADMIN/Documents/GitHub/tt10-multiplier_UART_SPI/src/tb_spi_slave.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module tb_spi_slave
