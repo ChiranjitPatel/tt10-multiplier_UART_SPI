@@ -7,7 +7,7 @@ module spi_slave (
     cs_bar,       
     sclk,
 	miso,	
-    mosi_reg_data,
+    // mosi_reg_data,
     rx_valid,
 	tx_done
 );
@@ -21,7 +21,7 @@ module spi_slave (
 	input	logic cs_bar;       				// chip select, active low (to the ADC)
 	input	logic sclk;         				// spi clock - 10 MHz
 	output 	logic miso;         				// spi mosi_reg_data out - ADC mosi_reg_data in
-	output	logic [15:0] mosi_reg_data;  		// mosi_reg_data 
+	// output	logic [15:0] mosi_reg_data;  		// mosi_reg_data 
 	output	logic rx_valid;         			// mosi_reg_data rx valid signal
 	output 	logic tx_done;         				// spi tx completed flag
 	
@@ -39,7 +39,6 @@ module spi_slave (
     logic sclk_drive_edge;
     logic rx_state_flag;
     logic tx_state_flag;
-    logic [WAIT_BITS-1:0] wait_cnt;
 	
 	// State
     typedef enum logic [1:0] {IDLE, TRANSFER, FINISH, WAIT_NEXT} state_t;
@@ -50,7 +49,6 @@ module spi_slave (
         if (~reset) begin
             rx_bit_cnt <= 0;
             tx_bit_cnt <= 0;
-            wait_cnt <= 0; 			
             rx_shift_reg <= 0;
             tx_shift_reg <= 0;
             rx_valid <= 0;
@@ -69,7 +67,6 @@ module spi_slave (
 								if (spi_start & cs_bar) begin		
 									rx_bit_cnt <= 0;
 									tx_bit_cnt <= 0;
-									wait_cnt <= 0;
 									rx_shift_reg <= {rx_shift_reg[DATA_WIDTH-2:0], mosi};
 									tx_shift_reg <= rx_shift_reg;
 									rx_valid <= 0;
@@ -128,23 +125,11 @@ module spi_slave (
 							end
 
 				FINISH: 	begin
-								mosi_reg_data <= rx_shift_reg[DATA_WIDTH-1:0];
+								// mosi_reg_data <= rx_shift_reg[DATA_WIDTH-1:0];
 								tx_shift_reg <= 0;
 								state <= WAIT_NEXT;
 							end				
 
-				// Add the additional wait time between the mosi_reg_data frames for better reception of mosi_reg_data to the ADC
-				// WAIT_NEXT: 	begin
-								// wait_cnt <= wait_cnt + 1;
-								// if (wait_cnt == 5) begin
-									// wait_cnt <= 0;
-									// state <= IDLE;
-								// end
-								// else begin
-									// state <= WAIT_NEXT;
-								// end
-							// end
-				
 				default: 	state <= IDLE;
 			endcase
 		end
